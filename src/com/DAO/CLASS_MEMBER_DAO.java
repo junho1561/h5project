@@ -54,11 +54,12 @@ public class CLASS_MEMBER_DAO {
 	public int Join(CLASS_MEMBER_DTO dto) {
 		try {
 			getConn();
-			String sql = "insert into class_member values(?,?,?)";
+			String sql = "insert into class_member values(?,?,?,?)";
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, dto.getEmail());
 			pst.setString(2, dto.getNickname());
 			pst.setString(3, dto.getPw());
+			pst.setInt(4, dto.getJob());
 
 			cnt = pst.executeUpdate();
 		} catch (Exception e) {

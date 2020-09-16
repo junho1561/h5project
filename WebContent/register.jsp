@@ -64,8 +64,8 @@
 												placeholder="nickname">
 										</div>
 										<div class="col-sm-6">
-											<input type="radio" name="job" value="강사">강사 <input
-												type="radio" name="job" value="학생">학생
+											<input type="radio" name="job" value="1">강사 
+											<input type="radio" name="job" value="2">학생
 										</div>
 									</div>
 									<div class="form-group">

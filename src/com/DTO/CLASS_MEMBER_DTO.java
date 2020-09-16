@@ -4,10 +4,17 @@ public class CLASS_MEMBER_DTO {
 	private String email;
 	private String nickname;
 	private String pw;
+	private int job;
 	
+	
+	public CLASS_MEMBER_DTO(String email, String nickname, String pw, int job) {
+		this.email = email;
+		this.nickname = nickname;
+		this.pw = pw;
+		this.job = job;
+	}
 	
 	public CLASS_MEMBER_DTO(String email, String nickname, String pw) {
-		super();
 		this.email = email;
 		this.nickname = nickname;
 		this.pw = pw;
@@ -44,7 +51,19 @@ public class CLASS_MEMBER_DTO {
 	}
 
 
+	public int getJob() {
+		return job;
+	}
+
+
+	public void setJob(int job) {
+		this.job = job;
+	}
 	
+	
+	
+	
+
 
 	
 	
