@@ -34,14 +34,14 @@
 	<div class="container">
 
 		<!-- Header -->
-		<header id="header" class="alt"> <a href="index.html"
+		<header id="header" class="alt"> <a href="mypage_t.jsp"
 			class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a> <nav>
 		<c:choose>
 			<c:when test="${empty info}">
 				<a href="Login.jsp"></a>
 			</c:when>
 			<c:otherwise>
-				<a href="index.html"></a>
+				<a href="mypage_t.jsp"></a>
 			</c:otherwise>
 		</c:choose> <!-- 로그인 후 Logout.jsp로 이동할 수 있는'로그아웃'링크와 '개인정보수정'링크를 출력하시오. --> </nav> </header>
 		<div class="container">
@@ -88,9 +88,9 @@
 										class="btn btn-primary btn-user btn-block" value="회원가입">
 									</a>
 									<hr>
-									<a href="index.html" class="btn btn-google btn-user btn-block">
+									<a href="Login.jsp" class="btn btn-google btn-user btn-block">
 										<i class="fab fa-google fa-fw"></i> Register with Google
-									</a> <a href="index.html"
+									</a> <a href="Login.jsp"
 										class="btn btn-facebook btn-user btn-block"> <i
 										class="fab fa-facebook-f fa-fw"></i> Register with Facebook
 									</a>
