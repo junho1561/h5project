@@ -4,6 +4,8 @@ select * from class_member where email ='juhee0086@gmail.com';
 
 select * from class_Member;
 
+
+
 CREATE TABLE class_member(
 	email VARCHAR2(100),
 	nickname VARCHAR2(100),
