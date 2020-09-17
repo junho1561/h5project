@@ -51,16 +51,10 @@
       </a>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+
 
       <!-- Nav Item - Tables -->
       
-      <li class="nav-item">
-        <a class="nav-link" href="mypage_t.jsp">
-          <i class="fas fa-fw fa-table"></i>
-          <span>마이 페이지 (강사)</span>
-        </a>
-      </li>
       
       <li class="nav-item active">
         <a class="nav-link" href="mypage_s.jsp">
