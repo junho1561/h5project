@@ -1,5 +1,7 @@
-<%@page import="com.DAO.BoardDAO"%>
-<%@page import="com.DTO.BoardDTO"%>
+<%@page import="com.DAO.test_BoardDAO"%>
+<%@page import="com.DTO.test_BoardDTO"%>
+<%@page import="com.DAO.test_MemberDAO"%>
+<%@page import="com.DTO.test_MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DTO.CLASS_MEMBER_DTO"%>
 <%@page import="com.DAO.CLASS_MEMBER_DAO"%>
@@ -280,11 +282,26 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">나의 회원 등급</h6>
             </div>
+            
+            <%-- 회원 등급을 불러오기 --%>
+            <%--<%
+	            int membership = Integer.parseInt(request.getParameter("membership"));
+				test_MemberDAO dao = new test_MemberDAO();
+				test_MemberDTO dto = dao.SelectMembership(String email);
+            --%>
+            
             <div class="card-body">
               <!-- <div class="card-header py-3">ì§ë¬¸ì ë§ì´ í  ìë¡ ë±ê¸ì´ ì¬ë¼ì!</div> -->
                 <h2 class="small font-weight-bold">아직 질문은 부끄러워요<span class="float-right">이제 프로 질문러!</span></h2>
+              
+              <!-- 나의 회원 등급을 progress bar 형태로 보여주기 (계정 주인의 회원 등급에 맞게 나타나게끔 코드 변경 필요 => aria-valuenow를 조정)-->
               <div class="progress mb-4">
-                <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" 
+                style="width: 40%" 
+		               aria-valuenow="40" 
+		               aria-valuemin="0" 
+		               aria-valuemax="100">
+                </div>
               </div>
             </div>
           </div>
@@ -297,8 +314,8 @@
             </div>
             
             <% 
-            	BoardDAO dao = new BoardDAO();
-           		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
+            	test_BoardDAO dao = new test_BoardDAO();
+           		ArrayList<test_BoardDTO> list = new ArrayList<test_BoardDTO>();
            		list = dao.viewAll();
 			%>
             

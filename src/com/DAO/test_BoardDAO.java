@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.DTO.BoardDTO;
+import com.DTO.test_BoardDTO;
 
-public class BoardDAO {
+public class test_BoardDAO {
 	
 	private Connection conn;
 	private PreparedStatement pst;
@@ -79,9 +79,9 @@ public class BoardDAO {
 //		return cnt;
 //	}
 //	
-	public ArrayList<BoardDTO> viewAll () {
+	public ArrayList<test_BoardDTO> viewAll () {
 		
-		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
+		ArrayList<test_BoardDTO> list = new ArrayList<test_BoardDTO>();
 		getConnect();
 		
 		
@@ -97,7 +97,7 @@ public class BoardDAO {
 		    	int likes = rs.getInt(4);
 		    	String class_date = rs.getString(5);
 		    	
-		    	BoardDTO dto = new BoardDTO(question, classes, teacher, likes, class_date);
+		    	test_BoardDTO dto = new test_BoardDTO(question, classes, teacher, likes, class_date);
 		    	list.add(dto);
 		    }
 		 

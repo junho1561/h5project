@@ -1,6 +1,6 @@
 package com.DTO;
 
-public class BoardDTO {
+public class test_BoardDTO {
 	
 	private String question;
 	private String classes;
@@ -9,7 +9,7 @@ public class BoardDTO {
 	private String class_date;
 	
 	
-	public BoardDTO(String question, String classes, String teacher, int likes, String class_date) {
+	public test_BoardDTO(String question, String classes, String teacher, int likes, String class_date) {
 		this.question = question;
 		this.classes = classes;
 		this.teacher = teacher;

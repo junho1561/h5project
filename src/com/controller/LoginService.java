@@ -31,6 +31,6 @@ public class LoginService implements Command{
 		} else {
 			System.out.println("로그인 실패");
 		}
-		return "index.html";
+		return "mypage_s.jsp";
 	}
 }
