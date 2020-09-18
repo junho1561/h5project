@@ -54,12 +54,13 @@ public class CLASS_MEMBER_DAO {
    public int Join(CLASS_MEMBER_DTO dto) {
       try {
          getConn();
-         String sql = "insert into class_member values(?,?,?,?)";
+         String sql = "insert into class_member(email,nickname,pw,job) values(?,?,?,?)";
          pst = conn.prepareStatement(sql);
          pst.setString(1, dto.getEmail());
          pst.setString(2, dto.getNickname());
          pst.setString(3, dto.getPw());
          pst.setInt(4, dto.getJob());
+//         pst.setInt(5, dto.getStudentlevel());
 
          cnt = pst.executeUpdate();
       } catch (Exception e) {
@@ -89,9 +90,10 @@ public class CLASS_MEMBER_DAO {
             String nickname = rs.getString(2);
             String pw = rs.getString(3);
             int job = rs.getInt(4);
+            int studentlevel = rs.getInt(5);
             
             
-            info = new CLASS_MEMBER_DTO(email, nickname, pw, job);
+            info = new CLASS_MEMBER_DTO(email, nickname, pw, job, studentlevel);
          }
          
          
@@ -150,69 +152,5 @@ public class CLASS_MEMBER_DAO {
    }
 
    
-
-   public CLASS_MEMBER_DTO SelectOne(String id) {
-
-      CLASS_MEMBER_DTO dto = null;
-
-      try {
-         getConn();
-
-         String sql = "select * from web_member where id = ?";
-         pst = conn.prepareStatement(sql);
-         pst.setString(1, id);
-
-         ResultSet rs = pst.executeQuery();
-         // executeUpdate = > insert/update/delete
-         // 리턴되는 값 : 명령에 성공한 횟수
-         // executeUpdate = > select
-         // 리턴되는 값 : 검색된 데이터
-
-         while (rs.next()) { // 이동하면서 아무것도 없는 값을 만나면 false를 넘겨준다.(while문 종료)
-            String getid = rs.getString(1);
-            String pw = rs.getString(2);
-            String nick = rs.getString(3);
-
-            dto = new CLASS_MEMBER_DTO(getid, pw, nick);
-
-         }
-
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally {
-         close();
-      }
-      return dto;
-   }
-   
-   public ArrayList<CLASS_MEMBER_DTO> SelectAll() {
-      ArrayList<CLASS_MEMBER_DTO> list = new ArrayList<CLASS_MEMBER_DTO>();
-      
-      getConn();
-      
-      String sql = "select * from web_member";
-      
-      try {
-         pst = conn.prepareStatement(sql);
-         ResultSet rs = pst.executeQuery(); //ResultSet은 항상 컬럼을 가리키고있다.
-         
-         while(rs.next()){ //이동하면서 아무것도 없는 값을 만나면 false를 넘겨준다.(while문 종료)
-            String id = rs.getString(1);            
-            String pw = rs.getString(2);            
-            String nick = rs.getString(3);
-            CLASS_MEMBER_DTO dto = new CLASS_MEMBER_DTO(id, pw, nick);
-            list.add(dto);
-         }
-         
-         
-      } catch (SQLException e) {
-         e.printStackTrace();
-      }finally {
-         close();
-      }
-      
-      return list;
-   }
-
    
 }

@@ -37,9 +37,9 @@
                         <c:when test="${empty info}">
                            <a href="Login.jsp"></a>
                         </c:when>
-                        <c:when test="${info.getjob()==1}">
-                           <a href="mypage_t.jsp"></a>
-                        </c:when>
+                        <c:otherwise>
+							<a href="LoginService.do"></a>
+						</c:otherwise>
                      </c:choose>
                      <!-- 로그인 후 Logout.jsp로 이동할 수 있는'로그아웃'링크와 '개인정보수정'링크를 출력하시오. -->
                   </nav>

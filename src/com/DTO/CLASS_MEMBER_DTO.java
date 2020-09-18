@@ -5,19 +5,22 @@ public class CLASS_MEMBER_DTO {
 	private String nickname;
 	private String pw;
 	private int job;
+	private int studentlevel;
 	
+	
+	public CLASS_MEMBER_DTO(String email, String nickname, String pw, int job, int studentlevel) {
+		this.email = email;
+		this.nickname = nickname;
+		this.pw = pw;
+		this.job = job;
+		this.studentlevel = studentlevel;
+	}
 	
 	public CLASS_MEMBER_DTO(String email, String nickname, String pw, int job) {
 		this.email = email;
 		this.nickname = nickname;
 		this.pw = pw;
 		this.job = job;
-	}
-	
-	public CLASS_MEMBER_DTO(String email, String nickname, String pw) {
-		this.email = email;
-		this.nickname = nickname;
-		this.pw = pw;
 	}
 
 
@@ -59,7 +62,17 @@ public class CLASS_MEMBER_DTO {
 	public void setJob(int job) {
 		this.job = job;
 	}
-	
+
+
+	public int getStudentlevel() {
+		return studentlevel;
+	}
+
+
+	public void setStudentlevel(int studentlevel) {
+		this.studentlevel = studentlevel;
+	}
+
 	
 	
 	

@@ -15,6 +15,7 @@ public class JoinService implements Command{
 		String nickname = request.getParameter("nickname");
 		String pw = request.getParameter("pw");
 		int job = Integer.parseInt(request.getParameter("job"));
+//		int studentlevel = Integer.parseInt(request.getParameter("studentlevel"));
 		
 		
 		CLASS_MEMBER_DTO dto = new CLASS_MEMBER_DTO(email, nickname, pw, job);

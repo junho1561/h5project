@@ -15,8 +15,10 @@ public class LoginService implements Command{
       String email = request.getParameter("email");
       String nickname = request.getParameter("nickname");
       String pw = request.getParameter("pw");
+      int job = Integer.parseInt(request.getParameter("job"));
+      int studentlevel = Integer.parseInt(request.getParameter("studentlevel"));
 
-      CLASS_MEMBER_DTO dto = new CLASS_MEMBER_DTO(email, nickname, pw);
+      CLASS_MEMBER_DTO dto = new CLASS_MEMBER_DTO(email, nickname, pw, job, studentlevel);
       CLASS_MEMBER_DAO dao = new CLASS_MEMBER_DAO();
 
       // 로그인 성공 : info안에 email,pw,tel,addr이 담겨있고(null이아님)
