@@ -23,6 +23,11 @@ public class CLASS_MEMBER_DTO {
 		this.job = job;
 	}
 
+	public CLASS_MEMBER_DTO(String email, String pw) {
+		this.email = email;
+		this.pw = pw;
+	}
+	
 
 	public String getEmail() {
 		return email;

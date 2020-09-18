@@ -77,7 +77,7 @@ public class CLASS_MEMBER_DAO {
       
       CLASS_MEMBER_DTO info= null;
       try {
-         String sql = "select * from  class_member where email=? and pw=?";
+         String sql = "select * from class_member where email=? and pw=?";
          
          pst = conn.prepareStatement(sql);
          pst.setString(1, dto.getEmail());
@@ -92,8 +92,8 @@ public class CLASS_MEMBER_DAO {
             int job = rs.getInt(4);
             int studentlevel = rs.getInt(5);
             
-            
             info = new CLASS_MEMBER_DTO(email, nickname, pw, job, studentlevel);
+//            info = new CLASS_MEMBER_DTO(email, nickname, pw, job, studentlevel);
          }
          
          
