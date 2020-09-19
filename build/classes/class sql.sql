@@ -36,7 +36,7 @@ CREATE TABLE question(
    CONSTRAINT question_nickname_fk FOREIGN KEY (nickname)
    REFERENCES class_member(nickname));
    
-select * from question;
+
 select * from question where nickname = 's1';
 insert into question (nickname, question, classname, teacher) values(
    'd',
@@ -68,6 +68,7 @@ insert into question (nickname, question, classname, teacher, likes, classdate) 
    sysdate 
 );
 
+select * from question;
    
    
 
