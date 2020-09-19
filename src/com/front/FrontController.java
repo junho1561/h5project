@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.controller.JoinService;
 import com.controller.LoginService;
+import com.controller.LogoutService;
 import com.sun.xml.internal.ws.client.SenderException;
 
 @WebServlet("*.do")
@@ -24,6 +25,7 @@ public class FrontController extends HttpServlet {
 		map = new HashMap<String, Command>(); //
 		map.put("JoinService.do", new JoinService());
 		map.put("LoginService.do", new LoginService());
+		map.put("LogoutService.do", new LogoutService());
 	}
 
 

@@ -1,7 +1,5 @@
-<%@page import="com.DAO.test_BoardDAO"%>
-<%@page import="com.DTO.test_BoardDTO"%>
-<%@page import="com.DAO.test_MemberDAO"%>
-<%@page import="com.DTO.test_MemberDTO"%>
+<%@page import="com.DAO.QuestionDAO"%>
+<%@page import="com.DTO.QuestionDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DTO.CLASS_MEMBER_DTO"%>
 <%@page import="com.DAO.CLASS_MEMBER_DAO"%>
@@ -33,6 +31,8 @@
 
 <body id="page-top">
 
+	<% CLASS_MEMBER_DTO info =(CLASS_MEMBER_DTO)session.getAttribute("info"); %>
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -44,7 +44,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3"> h5 </div>
       </a>
 
       <!-- Divider<hr class="sidebar-divider my-0"> -->
@@ -311,27 +311,19 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=info.getNickname() %></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
+                  	회원정보 수정
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="LogoutService.do" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  	로그아웃
                 </a>
               </div>
             </li>
@@ -412,10 +404,11 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">공감 수가 많았던 질문 살펴보기</h6>
             </div>
-             <% 
-            	test_BoardDAO dao = new test_BoardDAO();
-           		ArrayList<test_BoardDTO> list = new ArrayList<test_BoardDTO>();
-           		list = dao.viewAll();
+            
+            <% 
+            	QuestionDAO dao = new QuestionDAO();
+           		ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+           		list = dao.viewQ(info.getNickname());
 			%>
 			
             <div class="card-body">
@@ -431,13 +424,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                     <% for (int i = 0; i < list.size(); i++) { %>
+                     <% for (int i = 1; i < list.size(); i++) { %>
                        <tr>
                          <td><%= list.get(i).getQuestion() %></td>
-                         <td><%= list.get(i).getClasses() %></td>
+                         <td><%= list.get(i).getClassname() %></td>
                          <td><%= list.get(i).getTeacher() %></td>
                          <td><%= list.get(i).getLikes() %></td>
-                         <td><%= list.get(i).getClass_date() %></td>
+                         <td><%= list.get(i).getClassdate() %></td>
                        </tr>
                     <% } %>
                   </tbody>
@@ -488,15 +481,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">Ã </span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">로그아웃 하시겠습니까?</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+          <a class="btn btn-primary" href="Login.jsp">로그아웃</a>
         </div>
       </div>
     </div>
