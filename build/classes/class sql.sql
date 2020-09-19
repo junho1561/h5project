@@ -20,3 +20,21 @@ INSERT INTO CLASS_MEMBER (email,nickname,pw,job) VALUES(
 	'0086',
 	'1'
 );
+
+
+CREATE TABLE question(
+question_seq NUMBER,
+nickname VARCHAR2(100) NOT NULL, 
+question VARCHAR2(3000) NOT NULL,
+class VARCHAR2(100) NOT NULL,
+teacher VARCHAR2(100) DEFAULT 0,
+likes INT,
+classdate DATE,
+CONSTRAINT question_question_seq_pk PRIMARY KEY(question_seq),
+CONSTRAINT question_nickname_fk FOREIGN KEY(nickname) REFERENCES class_member(nickname) 
+);
+
+SELECT * FROM question;
+
+
+

@@ -362,7 +362,7 @@
                          나의 강의
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">머신러닝1주차</a>
+                      <a class="dropdown-item" href="#">머신러닝 1주차</a>
                       <a class="dropdown-item" href="#">머신러닝 2주차</a>
                       <a class="dropdown-item" href="#">머신러닝 3주차</a>
                     </div>
@@ -378,6 +378,7 @@
 
               <!-- Project Card Example -->
               <div class="card shadow mb-4">
+              
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">질문 키워드</h6>
                 </div>
@@ -403,28 +404,30 @@
                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
                   </div>
                 </div>
+                
               </div>
               
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+              <h6 class="m-0 font-weight-bold text-primary">공감 수가 많았던 질문 살펴보기</h6>
             </div>
              <% 
             	test_BoardDAO dao = new test_BoardDAO();
            		ArrayList<test_BoardDTO> list = new ArrayList<test_BoardDTO>();
            		list = dao.viewAll();
 			%>
+			
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Questions</th> 
-                      <th>Class</th>
-                      <th>Teacher</th>
-                      <th>Likes  </th>
-                      <th>Date </th>
+                      <th>질문 내용</th> 
+                      <th>수업</th>
+                      <th>강사</th>
+                      <th>공감 수</th>
+                      <th>수업 날짜</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -440,11 +443,11 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>Questions</th>
-                      <th>Class</th>
-                      <th>Teacher</th>
-                      <th>Likes  </th>
-                      <th>Date</th>
+                      <th>질문 내용</th> 
+                      <th>수업</th>
+                      <th>강사</th>
+                      <th>공감 수</th>
+                      <th>수업 날짜</th>
                     </tr>
                   </tfoot>
                   
