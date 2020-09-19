@@ -1,7 +1,5 @@
-<%@page import="com.DAO.test_BoardDAO"%>
-<%@page import="com.DTO.test_BoardDTO"%>
-<%@page import="com.DAO.test_MemberDAO"%>
-<%@page import="com.DTO.test_MemberDTO"%>
+<%@page import="com.DTO.QuestionDTO"%>
+<%@page import="com.DAO.QuestionDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DTO.CLASS_MEMBER_DTO"%>
 <%@page import="com.DAO.CLASS_MEMBER_DAO"%>
@@ -115,9 +113,9 @@ button{
             </div>
             
             <% 
-            	test_BoardDAO dao = new test_BoardDAO();
-           		ArrayList<test_BoardDTO> list = new ArrayList<test_BoardDTO>();
-           		list = dao.viewAll();
+            	QuestionDAO dao = new QuestionDAO();
+           		ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+           		list = dao.topQ();
 			%>
             
             <div class="card-body">  
@@ -133,7 +131,6 @@ button{
 				 <tbody>
                   	<% for (int i = 0; i < list.size(); i++) { %>
 	                    <tr>
-	                    <!-- 이건 제가 시험 삼아 만든 데이터라서 나중에 주희언니가 만든 데이터로 바꿔야 해요. -->
 	                      <td><%= list.get(i).getQuestion() %></td>
 	                      <td><%= list.get(i).getLikes() %></td>
 	                    </tr>

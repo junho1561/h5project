@@ -24,8 +24,12 @@ public class QuestionDTO {
 		this.question = question;
 		this.classname = classname;
 		this.teacher = teacher;
-		this.likes = likes;
+		this.question = question;
 		this.classdate = classdate;
+	}
+	public QuestionDTO(String question, int likes) {
+		this.question = question;
+		this.likes = likes;
 	}
 	public String getNickname() {
 		return nickname;

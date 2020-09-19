@@ -92,5 +92,34 @@ public class QuestionDAO {
 		return list;
 		
 	}
+	
+	public ArrayList<QuestionDTO> topQ() {
+		
+		ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+		
+		getConn();
+		
+		try {
+			String sql = "select * from question order by likes DESC"; 
+		    pst = conn.prepareStatement(sql);
+		    
+		    ResultSet rs = pst.executeQuery();
+		    
+		    while (rs.next()) {
+		    	String question = rs.getString(1);
+		    	int likes = rs.getInt(2);
+		    	
+		    	QuestionDTO dto = new QuestionDTO(question, likes);
+		    	list.add(dto);
+		    }
+		 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+		
+	}
 
 }
