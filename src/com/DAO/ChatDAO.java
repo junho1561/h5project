@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.DTO.ChatDTO;
+import com.DTO.ChatinfoDTO;
 
 
 
@@ -16,7 +17,8 @@ public class ChatDAO {
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
-
+	int cnt =0;
+	
 	private void getConnection() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -52,13 +54,15 @@ public class ChatDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
+			
 			while (rs.next()) {
-				String nickname = rs.getString(1);
-				String chat = rs.getString(2);
-				String classname = rs.getString(3);
-				String teacher = rs.getString(4);
+				
+				int chat_num = rs.getInt(1);
+				String nickname = rs.getString(2);
+				String chat = rs.getString(3);
+				int likes = rs.getInt(4);
 				String chattime = rs.getString(5);
-				ChatDTO dto = new ChatDTO(nickname, chat, classname, teacher, chattime);
+				ChatDTO dto = new ChatDTO(chat_num, nickname, chat, likes, chattime);
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -71,22 +75,67 @@ public class ChatDAO {
 		return list;
 	}
 
-	public void insert(ChatDTO dto) {
-
+	public int classinsert(ChatDTO dto) {
 		try {
 			getConnection();
-			String sql = "insert into chat (nickname,chat) values(?,?)";
+			String sql = "insert into chat values(?,?,?,?,sysdate)";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getNickname());
-			psmt.setString(2, dto.getChat());
-			psmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			psmt.setInt(1, dto.getChat_num());
+			psmt.setString(2, dto.getNickname());
+			psmt.setString(3, dto.getChat());
+			psmt.setInt(4, dto.getLikes());
+			
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-
+		
+		return cnt;
 	}
+
+	public int createChatRoom(ChatinfoDTO dto) {
+
+		int cnt = 0;
+		
+		getConnection();
+		
+		String sql = "insert into chatinfo values(info_num.nextval, ?, ?, sysdate)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getTeacher());
+			psmt.setString(2, dto.getClassname());
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	
+//	public void insert(ChatDTO dto) {
+//
+//		try {
+//			getConnection();
+//			String sql = "insert into chat (nickname, chat, classname, teacher) values(?,?,?,?)";
+//			psmt = conn.prepareStatement(sql);
+//			psmt.setString(1, dto.getNickname());
+//			psmt.setString(2, dto.getChat());
+//			psmt.setString(3, dto.getClassname());
+//			psmt.setString(4, dto.getTeacher());
+//			psmt.executeUpdate();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} finally {
+//			close();
+//		}
+//
+//	}
+
 
 }

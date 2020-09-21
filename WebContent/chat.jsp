@@ -1,3 +1,4 @@
+<%@page import="com.DTO.ChatDTO"%>
 <%@page import="com.DTO.QuestionDTO"%>
 <%@page import="com.DAO.QuestionDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -98,8 +99,10 @@ button{
 </head>
 <body>
 	<% request.setCharacterEncoding("UTF-8"); %>
-	<% CLASS_MEMBER_DTO info =(CLASS_MEMBER_DTO)session.getAttribute("info"); %>
-	
+	<% 
+		int num = Integer.parseInt(request.getParameter("cnt"));
+	%>
+	<input type="hidden" id = "chat_num" value = "<%= num %>">
 	
 	<div id="chat-container">
 		<br><br><br>
@@ -112,32 +115,8 @@ button{
               <h6 class="m-0 font-weight-bold text-primary">공감이 많은 질문들</h6>
             </div>
             
-            <% 
-            	QuestionDAO dao = new QuestionDAO();
-           		ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
-           		list = dao.topQ();
-			%>
-            
             <div class="card-body">  
               <div class="table-responsive">
-                <table class="table table-bordered" id="view" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>질문 내용</th> 
-                      <th>공감 수</th>
-                    </tr>
-                  </thead>
-
-				 <tbody>
-                  	<% for (int i = 0; i < list.size(); i++) { %>
-	                    <tr>
-	                      <td><%= list.get(i).getQuestion() %></td>
-	                      <td><%= list.get(i).getLikes() %></td>
-	                    </tr>
-                    <% } %>
-
-                  </tbody>                
-                </table>
               </div>
             </div>
           </div>
@@ -181,9 +160,9 @@ button{
 
 			//스크롤 최하단
 			$('#view').scrollTop($('#view')[0].scrollHeight);
-				
+			var chat_num = $('#chat_num').val();
 			$.ajax({
-				url : "SelectChat",
+				url : "SelectChat?chat_num=" + chat_num,
 				dataType : "json",
 				success : function(result) {   
 					$('#list').empty();
@@ -229,8 +208,10 @@ button{
 			decodeURIComponent() : encodeURIComponent()로 인코딩한 문자열을 디코딩
 			*/
 			
+			
+			var chat_num = $('#chat_num').val();
 			$.ajax({
-				url : "AddChat",
+				url : "AddChat?chat_num="+chat_num,
 				type : "POST",
 				dataType : "json",
 				data : "nickname=" + nickname + "&chat=" + chat,

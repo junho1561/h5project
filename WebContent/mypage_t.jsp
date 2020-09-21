@@ -1,3 +1,4 @@
+<%@page import="com.DTO.ChatDTO"%>
 <%@page import="com.DAO.QuestionDAO"%>
 <%@page import="com.DTO.QuestionDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -30,7 +31,7 @@
 </head>
 
 <body id="page-top">
-
+	<% ChatDTO chatdto =(ChatDTO)session.getAttribute("chatdto"); %>
 	<% CLASS_MEMBER_DTO info =(CLASS_MEMBER_DTO)session.getAttribute("info"); %>
 
   <!-- Page Wrapper -->
@@ -338,17 +339,22 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">마이페이지</h1>
-            <a href="chat.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>강의 만들기</a>
+ <!--            <h1 class="h3 mb-0 text-gray-800">마이페이지</h1>--> 
+     <!--        <a href="chat.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>강의 만들기</a> -->
           </div>
 <!--      <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>-->
 
        <!--나의 강의실-->
+          <!-- Page Heading -->
           <div class="card mb-4">
-              <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">나의 강의 실</h6>
-                </div>
-                <div class="card-body">
+          <form class="user" action="classnameService.do" method="post">
+	              <div class="card-header py-3">
+	              <div class="d-sm-flex align-items-center justify-content-between mb-4">
+	            <input name="classname" type="text" class="form-control form-control-user"placeholder="classname">
+	             <input name="teacher" type="text" class="form-control form-control-user"placeholder="teacher">
+	            <input type = "submit" class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" value="채팅방 개설">
+            </form>
+          </div>
                   <div class="dropdown no-arrow mb-4">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          나의 강의

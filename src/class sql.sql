@@ -3,11 +3,12 @@ drop table class_member;
 //////////////////////////////////////////
 
 CREATE TABLE class_member(
-   email varchar2(100),
-   nickname varchar2(20) PRIMARY KEY, 
-   pw varchar2(20) not null,
-   job number(10) not null,
-   studentlevel number(10) default 0)
+email varchar2(100) unique,
+nickname varchar2(20), 
+pw varchar2(20) not null,
+job number(10) not null,
+studentlevel number(10) default 0,
+CONSTRAINT class_nickname PRIMARY KEY (nickname));
    
 
 
@@ -20,8 +21,8 @@ INSERT INTO CLASS_MEMBER (email, nickname, pw, job) VALUES(
    '0086',
    '2');
 INSERT INTO CLASS_MEMBER (email, nickname, pw, job) VALUES(
-   'teacher',
-   't',
+   '11',
+   '1',
    '1111',
    '1');
 
@@ -29,13 +30,13 @@ INSERT INTO CLASS_MEMBER (email, nickname, pw, job) VALUES(
 
 drop table question;
 
-CREATE TABLE question(
-   nickname VARCHAR2(20),
-   question VARCHAR2(3000) not null,
-   classname  VARCHAR2(100) not null,
-   teacher VARCHAR2(100) not null,
-   classdate VARCHAR2(100) not null,
-   likes NUMBER(20) default 0)
+--CREATE TABLE question(
+--   nickname VARCHAR2(20),
+--   question VARCHAR2(3000) not null,
+--   classname  VARCHAR2(100) not null,
+--   teacher VARCHAR2(100) not null,
+--   classdate VARCHAR2(100) not null,
+--   likes NUMBER(20) default 0)
 
 CREATE TABLE question(
    nickname VARCHAR2(20),
@@ -55,15 +56,24 @@ insert into question (nickname, question, classname, teacher) values(
    '머신러닝',
    '손지영');
 
+insert into question (nickname, question, classname, teacher, classdate, likes) values(
+   '1',
+   'test question',
+   'test classname',
+   'test teacher',
+   sysdate,
+   0
+   );
 ////////////////////////////////////////
 
 drop table chat;
-CREATE TABLE chat(
-   nickname VARCHAR2(20) ,
-   chat VARCHAR2(3000) not null,
-   classname  VARCHAR2(100) not null,
-   teacher VARCHAR2(100) ,
-   chattime DATE default sysdate)
+
+--CREATE TABLE chat(
+--   nickname VARCHAR2(20) ,
+--   chat VARCHAR2(3000) not null,
+--   classname  VARCHAR2(100) not null,
+--   teacher VARCHAR2(100) ,
+--   chattime DATE default sysdate)
   
 
 CREATE TABLE chat(
@@ -80,6 +90,13 @@ insert into chat (nickname, chat, classname, teacher) values(
    'test',
    '머신러닝',
    '손지영'
+   );
+   
+insert into chat (nickname, chat, classname, teacher) values(
+   '11',
+   'test',
+   'testclassname',
+   'testteacher'
    );
    
 select * from chat;
