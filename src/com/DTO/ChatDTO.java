@@ -1,23 +1,66 @@
 package com.DTO;
 
 public class ChatDTO {
-	private String id;
-	private String content;
-	public ChatDTO(String id, String content) {
-		this.id = id;
-		this.content = content;
+	private String nickname;
+	private String chat;
+	private String classname;
+	private String teacher;
+	private String chattime;
+	
+	public ChatDTO(String nickname, String chat, String classname, String teacher, String chattime) {
+		this.nickname = nickname;
+		this.chat = chat;
+		this.classname = classname;
+		this.teacher = teacher;
+		this.chattime = chattime;
 	}
-	public String getId() {
-		return id;
+	public ChatDTO(String nickname, String chat) {
+		this.nickname = nickname;
+		this.chat = chat;
 	}
-	public void setId(String id) {
-		this.id = id;
+	
+
+	
+	public String getNickname() {
+		return nickname;
 	}
-	public String getContent() {
-		return content;
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
-	public void setContent(String content) {
-		this.content = content;
+
+	public String getChat() {
+		return chat;
 	}
+
+	public void setChat(String chat) {
+		this.chat = chat;
+	}
+
+	public String getClassname() {
+		return classname;
+	}
+
+	public void setClassname(String classname) {
+		this.classname = classname;
+	}
+
+	public String getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
+	}
+
+	public String getChattime() {
+		return chattime;
+	}
+
+	public void setChattime(String chattime) {
+		this.chattime = chattime;
+	}
+	
+	
 	
 }

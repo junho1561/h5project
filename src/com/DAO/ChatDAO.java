@@ -20,7 +20,7 @@ public class ChatDAO {
 	private void getConnection() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String db_url = "jdbc:oracle:thin:@61.84.215.27:1521:xe";
+			String db_url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String db_id = "hr";
 			String db_pw = "hr";
 			conn = DriverManager.getConnection(db_url, db_id, db_pw);
@@ -48,14 +48,17 @@ public class ChatDAO {
 		ArrayList<ChatDTO> list = new ArrayList<ChatDTO>();
 
 		getConnection();
-		String sql = "select * from chat order by day desc";
+		String sql = "select * from chat order by chattime desc";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				String id = rs.getString(1);
-				String content = rs.getString(2);
-				ChatDTO dto = new ChatDTO(id, content);
+				String nickname = rs.getString(1);
+				String chat = rs.getString(2);
+				String classname = rs.getString(3);
+				String teacher = rs.getString(4);
+				String chattime = rs.getString(5);
+				ChatDTO dto = new ChatDTO(nickname, chat, classname, teacher, chattime);
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -72,10 +75,10 @@ public class ChatDAO {
 
 		try {
 			getConnection();
-			String sql = "insert into chat values(?,?,sysdate)";
+			String sql = "insert into chat (nickname,chat) values(?,?)";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getId());
-			psmt.setString(2, dto.getContent());
+			psmt.setString(1, dto.getNickname());
+			psmt.setString(2, dto.getChat());
 			psmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

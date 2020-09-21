@@ -97,9 +97,9 @@ button{
 <title>Insert title here</title>
 </head>
 <body>
-	<% 
-		request.setCharacterEncoding("UTF-8");
-	%>
+	<% request.setCharacterEncoding("UTF-8"); %>
+	<% CLASS_MEMBER_DTO info =(CLASS_MEMBER_DTO)session.getAttribute("info"); %>
+	
 	
 	<div id="chat-container">
 		<br><br><br>
@@ -166,7 +166,7 @@ button{
 	<!-- javascript -->
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
-		console.log('아이디>>','${param.id}');
+		console.log('아이디>>','${info.nickname}');
 		$('#btn').on('click', play);
 		$('#content').on('keydown',da);
 		setInterval(select,1000);
@@ -189,20 +189,20 @@ button{
 					$('#list').empty();
 					for(var i = 0; i < result.length; i++){
 						var chatData = '';
-						if('${param.id}' === result[i].id){
-							chatData = '<li class="me-corpus"><span>'+result[i].id +'</span><br><p class="corpus">'+result[i].content+'</p></li>';
+						if('${info.nickname}' === result[i].nickname){
+							chatData = '<li class="me-corpus"><span>'+result[i].nickname +'</span><br><p class="corpus">'+result[i].chat+'</p></li>';
 						}else{
-							chatData = '<li><span>'+result[i].id +'</span><br><p class="corpus">'+result[i].content+'</p></li>';
+							chatData = '<li><span>'+result[i].nickname +'</span><br><p class="corpus">'+result[i].chat+'</p></li>';
 						}
 						
 						$('#list').prepend(chatData);
 						
-						console.log(result[i].id);
-						console.log(result[i].content);
+						console.log(result[i].nickname);
+						console.log(result[i].chat);
 					}
 				},
 				error : function() {
-					alert('error');
+					alert('errorS');
 				}
 			});
 
@@ -213,13 +213,13 @@ button{
 			//스크롤 최하단
 			$('#view').scrollTop($('#view')[0].scrollHeight);
 			
-			var id = '${param.id}';
-			var content = $('#content').val();
+			var nickname = '${info.nickname}';
+			var chat = $('#content').val();
 			$('#content').val('');
 			$('#content').focus();
 			
-			if(id === '?'){ //물음표 -> 아스키코드로 변환
-				id = '0x3F';
+			if(nickname === '?'){ //물음표 -> 아스키코드로 변환
+				nickname = '0x3F';
 			}
 			/*
 			escape() <> unescape()
@@ -233,19 +233,19 @@ button{
 				url : "AddChat",
 				type : "POST",
 				dataType : "json",
-				data : "id=" + id + "&content=" + content,
+				data : "nickname=" + nickname + "&chat=" + chat,
 				success : function(result) {
 					
 					$('#list').empty();
 					for(var i = 0; i < result.length; i++){
-						$('#list').prepend('<li><span>'+result[i].id +'</span> : '+result[i].content+'</li>');
-						//console.log(result[i].id);
-						//console.log(result[i].content);
+						$('#list').prepend('<li><span>'+result[i].nickname +'</span> : '+result[i].chat+'</li>');
+						//console.log(result[i].nickname);
+						//console.log(result[i].chat);
 						
 					}
 				},
 				error : function() {
-					alert('error');
+					alert('errorA');
 				}
 			});
 		}

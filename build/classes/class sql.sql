@@ -3,12 +3,12 @@ drop table class_member;
 //////////////////////////////////////////
 
 CREATE TABLE class_member(
-   email varchar2(100) unique,
-   nickname varchar2(20), 
+   email varchar2(100),
+   nickname varchar2(20) PRIMARY KEY, 
    pw varchar2(20) not null,
    job number(10) not null,
-   studentlevel number(10) default 0,
-   CONSTRAINT class_nickname_pk PRIMARY KEY (nickname));
+   studentlevel number(10) default 0)
+   
 
 
 select * from class_member;
@@ -34,8 +34,16 @@ CREATE TABLE question(
    question VARCHAR2(3000) not null,
    classname  VARCHAR2(100) not null,
    teacher VARCHAR2(100) not null,
-   likes NUMBER(20) default 0,
-   classdate DATE default sysdate,
+   classdate VARCHAR2(100) not null,
+   likes NUMBER(20) default 0)
+
+CREATE TABLE question(
+   nickname VARCHAR2(20),
+   question VARCHAR2(3000) not null,
+   classname VARCHAR2(100) not null,
+   teacher VARCHAR2(100) not null,
+   classdate VARCHAR2(100) not null,
+   likes NUMBER(20),
    CONSTRAINT question_nickname_fk FOREIGN KEY (nickname)
    REFERENCES class_member(nickname));
    
@@ -50,17 +58,29 @@ insert into question (nickname, question, classname, teacher) values(
 ////////////////////////////////////////
 
 drop table chat;
+CREATE TABLE chat(
+   nickname VARCHAR2(20) ,
+   chat VARCHAR2(3000) not null,
+   classname  VARCHAR2(100) not null,
+   teacher VARCHAR2(100) ,
+   chattime DATE default sysdate)
+  
 
 CREATE TABLE chat(
-   nickname VARCHAR2(20),
+   nickname VARCHAR2(20) ,
    chat VARCHAR2(3000) not null,
+   classname  VARCHAR2(100) not null,
+   teacher VARCHAR2(100) ,
    chattime DATE default sysdate,
    CONSTRAINT chat_nickname_fk FOREIGN KEY (nickname)
-    REFERENCES class_member(nickname));
+   REFERENCES class_member(nickname));
    
-insert into chat (nickname, chat) values(
+insert into chat (nickname, chat, classname, teacher) values(
    'd',
-   'test');
+   'test',
+   '머신러닝',
+   '손지영'
+   );
    
 select * from chat;
 

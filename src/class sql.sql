@@ -28,6 +28,7 @@ INSERT INTO CLASS_MEMBER (email, nickname, pw, job) VALUES(
 ///////////////////////////////////////////
 
 drop table question;
+
 CREATE TABLE question(
    nickname VARCHAR2(20),
    question VARCHAR2(3000) not null,
@@ -39,10 +40,10 @@ CREATE TABLE question(
 CREATE TABLE question(
    nickname VARCHAR2(20),
    question VARCHAR2(3000) not null,
-   classname  VARCHAR2(100) not null,
+   classname VARCHAR2(100) not null,
    teacher VARCHAR2(100) not null,
    classdate VARCHAR2(100) not null,
-   likes NUMBER(20) default 0,
+   likes NUMBER(20),
    CONSTRAINT question_nickname_fk FOREIGN KEY (nickname)
    REFERENCES class_member(nickname));
    
@@ -72,7 +73,7 @@ CREATE TABLE chat(
    teacher VARCHAR2(100) ,
    chattime DATE default sysdate,
    CONSTRAINT chat_nickname_fk FOREIGN KEY (nickname)
-    REFERENCES class_member(nickname));
+   REFERENCES class_member(nickname));
    
 insert into chat (nickname, chat, classname, teacher) values(
    'd',

@@ -22,11 +22,14 @@ public class AddChat extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
-		String id = request.getParameter("id");
-		String content = request.getParameter("content");
+		String nickname = request.getParameter("nickname");
+		String chat = request.getParameter("chat");
+		String classname = request.getParameter("classname");
+		String teacher = request.getParameter("teacher");
+		String chattime = request.getParameter("chattime");
 		com.DAO.ChatDAO dao = new com.DAO.ChatDAO();
-		if ( id.length() > 0 && content.length() > 0) {
-			com.DTO.ChatDTO dto = new com.DTO.ChatDTO(id, content);
+		if ( nickname.length() > 0 && chat.length() > 0) {
+			com.DTO.ChatDTO dto = new com.DTO.ChatDTO(nickname, chat, classname, teacher, chattime);
 			dao.insert(dto);
 		}
 		
