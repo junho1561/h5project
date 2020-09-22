@@ -148,8 +148,7 @@ button{
 		console.log('아이디>>','${info.nickname}');
 		$('#btn').on('click', play);
 		$('#content').on('keydown',da);
-		setInterval(select,1000);
-		
+		setInterval(select,100);
 		function da(key){
 			if(key.keyCode == 13){
 				play();
