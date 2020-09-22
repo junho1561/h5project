@@ -83,6 +83,14 @@ button{
 	border-radius: 10px;
 	border: 2px solid #0090d0;
 }
+
+button2{
+	width: 200px;
+	height: 30px;
+	border-radius: 10px;
+	border: 2px solid #0090d0;
+}
+
 .corpus{
 	display:inline-block;
 	padding:5px;
@@ -93,15 +101,37 @@ button{
 .me-corpus{
 	text-align: right;
 }
+
+#toast.reveal {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0)
+}
+
+.button{
+    background-image: url(https://kids.nationalgeographic.com/content/dam/kids/photos/articles/Science/H-P/heart.ngsversion.1396531395268.adapt.1900.1.jpg); 
+    background-repeat: no-repeat;  
+    background-color: transparent;
+    background-size: 20px 20px;  
+    border: none;          
+    cursor: pointer;       
+   width: 20px;
+   height: 20px;
+}
+
+.con_btn {
+	margin: 0px auto;
+	text-align: center;
+}
+
+
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<% request.setCharacterEncoding("UTF-8"); %>
-	<% 
-		int num = Integer.parseInt(request.getParameter("cnt"));
-	%>
+	<% int num = Integer.parseInt(request.getParameter("cnt")); %>
 	<input type="hidden" id = "chat_num" value = "<%= num %>">
 	
 	<div id="chat-container">
@@ -109,23 +139,44 @@ button{
 		<h1>마음껏 질문하세요!</h1>
 		<br><br><br>
 		
+		<% QuestionDAO dao = new QuestionDAO();  %>
+   		<% ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>(); %>
+		<% list = dao.topQ1(); %>
 		
-		<div class="card shadow mb-4">
+		<!-- <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">공감이 많은 질문들</h6>
-            </div>
+        </div> -->
             
             <div class="card-body">  
               <div class="table-responsive">
+            <tbody>
+            <table class="table table-bordered" id="view1" width="100%" cellspacing="0">
+             <thead>
+                    <tr>
+        	          <th>질문 내용</th> 
+                      <th>공감 수  </th>
+                      
+                    </tr>
+                  </thead>
+                     <tbody>
+                       <tr>
+                   		<% for (int i = 0; i < list.size(); i++) { %>
+                         <td><%= list.get(i).getQuestion() %></td>
+                         <td><%= list.get(i).getLikes() %></td>
+                       	 </tr>
+                    	<% } %>
+                  </tbody>                
+                </table>
               </div>
             </div>
           </div>
-		
+        </div>
 		
 		
 		<div id = "view">
 			<img src = "questionmark.png" id = "img">
-			<ul id="list"> </ul>
+			<ul id="list"> </ul> 
 		</div>
 		<br>
 		<table>
@@ -134,13 +185,13 @@ button{
 				<td><button id="btn">입력</button></td>
 			</tr>
 		</table>
-		
-		<div id="dev">
-			<span>나도 하고 싶었던 질문에 공감 버튼을 눌러 주세요</span>
+		<div class="con_btn">
+			<button id="pop1" onclick="javascript:pop1()"> 수업이 너무 빨라요! </button>
+			<button id="pop2" onclick="javascript:pop2()"> 다시 설명해 주세요! </button>
+			<button id="pop3" onclick="javascript:pop3()"> 이해가 잘 돼요! </button>
 		</div>
-	</div>
-	
-	
+			
+
 	
 	<!-- javascript -->
 	<script src="js/jquery-3.4.1.min.js"></script>
@@ -167,16 +218,21 @@ button{
 					$('#list').empty();
 					for(var i = 0; i < result.length; i++){
 						var chatData = '';
+						
 						if('${info.nickname}' === result[i].nickname){
-							chatData = '<li class="me-corpus"><span>'+result[i].nickname +'</span><br><p class="corpus">'+result[i].chat+'</p></li>';
+		                     chatData = '<li class="me-corpus"><span>'+result[i].nickname 
+		                     +'</span><br><input type = "button" class = "button">'+result[i].likes
+		                     +'</button><p class="corpus">'
+		                     +result[i].chat+'</p><p class="sysdate">'+result[i].chattime+'</p></li>';
 						}else{
-							chatData = '<li><span>'+result[i].nickname +'</span><br><p class="corpus">'+result[i].chat+'</p></li>';
+							chatData = '<li><span>'+result[i].nickname +'</span><br><input type = "button" class = "button">' + result[i].likes+'</button><p class="corpus">'+result[i].chat+'</p></li>';
 						}
 						
 						$('#list').prepend(chatData);
 						
 						console.log(result[i].nickname);
 						console.log(result[i].chat);
+						console.log(result[i].likes);
 					}
 				},
 				error : function() {
@@ -185,7 +241,6 @@ button{
 			});
 
 		}
-		
 		
 		function play(){
 			//스크롤 최하단
@@ -206,7 +261,6 @@ button{
 			decodeURI() : encodeURI()로 인코딩한 문자열을 디코딩
 			decodeURIComponent() : encodeURIComponent()로 인코딩한 문자열을 디코딩
 			*/
-			
 			
 			var chat_num = $('#chat_num').val();
 			$.ajax({
@@ -229,6 +283,44 @@ button{
 				}
 			});
 		}
+		
+		// 수업 상태 버튼 1
+		$('#pop1').on('click', function() {
+				var pop1_count = 0;
+	            
+				if (pop1_count < 3) {
+	                alert('수업이 너무 빨라요!');
+	                pop1_count++;
+	            } else {
+	            	alert('상태 버튼 전송은 세 번만 가능합니다.');
+	            }
+		});
+		
+		// 수업 상태 버튼 2
+		$('#pop2').on('click', function() {
+				var pop2_count = 0;
+				
+				if (pop2_count < 3) {
+					alert('다시 설명해 주세요!');
+					pop2_count++;
+	            } else {
+	            	alert('상태 버튼 전송은 세 번만 가능합니다.');
+	            }
+		});
+		
+		// 수업 상태 버튼 3
+		$('#pop3').on('click', function() {
+				var pop3_count = 0;
+				
+				if (pop3_count < 3) {
+					alert('이해가 잘 돼요!');
+					pop3_count++;
+	            } else {
+	            	alert('상태 버튼 전송은 세 번만 가능합니다.');
+	            }
+		});
+		
+		
 	</script>
 </body>
 </html>

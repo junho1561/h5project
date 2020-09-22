@@ -10,8 +10,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/SMT051/Desktop/jstl/jstl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/SMT051/Desktop/jstl/standard.jar"/>
-	<classpathentry kind="lib" path="C:/Users/SMT051/Desktop/주희/fileupload/cos.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SMT039/Desktop/fileupload/cos.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SMT039/Desktop/jstl/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SMT039/Desktop/jstl/standard.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

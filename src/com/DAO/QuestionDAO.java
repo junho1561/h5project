@@ -93,33 +93,37 @@ public class QuestionDAO {
 		
 	}
 	
-	public ArrayList<QuestionDTO> topQ() {
-		
-		ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
-		
-		getConn();
-		
-		try {
-			String sql = "select * from question order by likes DESC"; 
-		    pst = conn.prepareStatement(sql);
-		    
-		    ResultSet rs = pst.executeQuery();
-		    
-		    while (rs.next()) {
-		    	String question = rs.getString(1);
-		    	int likes = rs.getInt(2);
-		    	
-		    	QuestionDTO dto = new QuestionDTO(question, likes);
-		    	list.add(dto);
-		    }
-		 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-		
-	}
+	public ArrayList<QuestionDTO> topQ1() {
+        
+        ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+        
+        getConn();
+        
+        try {
+           String sql = "select * from question order by likes DESC"; 
+            pst = conn.prepareStatement(sql);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            while (rs.next()) {
+              String nickname = rs.getString(1);
+               String question = rs.getString(2);
+               String classname = rs.getString(3);
+               String teacher = rs.getString(4);
+               int likes = rs.getInt(5);
+               String classdate = rs.getString(6);
+               
+               QuestionDTO dto = new QuestionDTO(nickname, question, classname, teacher, likes, classdate);
+               list.add(dto);
+            }
+         
+        } catch (Exception e) {
+           e.printStackTrace();
+        } finally {
+           close();
+        }
+        return list;
+        
+     }
 
 }

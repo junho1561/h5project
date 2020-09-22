@@ -63,6 +63,15 @@ insert into question (nickname, question, classname, teacher, classdate, likes) 
    sysdate,
    0
    );
+   
+insert into question (nickname, question, classname, teacher, classdate, likes) values(
+   '스마트',
+   '이렇게 저렇게 하면 되나요?',
+   '데이터베이스',
+   '김동원',
+   sysdate,
+   13
+   );
 ////////////////////////////////////////
 drop table keyword;
 
