@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.DTO.ChatDTO;
+import com.front.Command;
 import com.google.gson.Gson;
 
 /**
  * Servlet implementation class addLikes
  */
 @WebServlet("/addLikes")
-public class addLikes extends HttpServlet {
+public class addLikes extends HttpServlet implements Command {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,6 +38,12 @@ public class addLikes extends HttpServlet {
 		}
 		
 
+	}
+
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

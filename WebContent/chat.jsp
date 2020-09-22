@@ -185,11 +185,14 @@ button2{
 				<td><button id="btn">입력</button></td>
 			</tr>
 		</table>
+		
+		
 		<div class="con_btn">
 			<button id="pop1" onclick="javascript:pop1()"> 수업이 너무 빨라요! </button>
 			<button id="pop2" onclick="javascript:pop2()"> 다시 설명해 주세요! </button>
 			<button id="pop3" onclick="javascript:pop3()"> 이해가 잘 돼요! </button>
 		</div>
+		
 			
 
 	
@@ -221,7 +224,7 @@ button2{
 						
 						if('${info.nickname}' === result[i].nickname){
 		                     chatData = '<li class="me-corpus"><span>'+result[i].nickname 
-		                     +'</span><br><input type = "button" class = "button">'+result[i].likes
+		                     +'</span><br><form action="addLikes.do" method="post"><button type = "submit" class = "button"></form>'+result[i].likes
 		                     +'</button><p class="corpus">'
 		                     +result[i].chat+'</p><p class="sysdate">'+result[i].chattime+'</p></li>';
 						}else{

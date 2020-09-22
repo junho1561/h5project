@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.controller.JoinService;
 import com.controller.LoginService;
 import com.controller.LogoutService;
+import com.controller.addLikes;
 import com.controller.classnameService;
 import com.sun.xml.internal.ws.client.SenderException;
 
@@ -28,6 +29,7 @@ public class FrontController extends HttpServlet {
 		map.put("LoginService.do", new LoginService());
 		map.put("LogoutService.do", new LogoutService());
 		map.put("classnameService.do", new classnameService());
+		map.put("addLikes.do", new addLikes());
 	}
 
 
