@@ -9,6 +9,10 @@ public class ChatDTO {
 	
 	
 	
+	public ChatDTO(int likes) {
+		this.likes = likes;
+	}
+
 	public ChatDTO(int chat_num, String nickname, String chat, int likes) {
 		this.chat_num = chat_num;
 		this.nickname = nickname;

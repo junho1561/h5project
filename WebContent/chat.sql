@@ -3,7 +3,7 @@ drop table chatinfo;
 
 create table chat(
 	chat_num number,
-	nickname varchar2(100),
+	nickname varchar2(100) REFERENCES class_member(nickname),
 	chat varchar2(1000),
 	likes number,
 	chattime date default sysdate);
@@ -14,6 +14,8 @@ create sequence chat_num start with 1 increment by 1;
 select * from chat;
 
 select * from chat order by chattime desc;
+
+update chat set likes=1 where chat='test';
 
 /////////////////////////////////////////////////////////////
 

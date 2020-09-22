@@ -96,9 +96,6 @@ public class ChatDAO {
 	}
 
 	public int createChatRoom(ChatinfoDTO dto) {
-
-		int cnt = 0;
-		
 		getConnection();
 		
 		String sql = "insert into chatinfo values(info_num.nextval, ?, ?, sysdate)";
@@ -115,27 +112,29 @@ public class ChatDAO {
 		}
 		return cnt;
 	}
+
+	public int likesUpdate(ChatDTO dto) {
+		getConnection();
+		
+		try {
+			String sql = "update chat set likes=? where chat like ?";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setInt(1, dto.getLikes());
+			psmt.setString(2, dto.getChat());
+			
+			cnt = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
+	}
 	
 	
-//	public void insert(ChatDTO dto) {
-//
-//		try {
-//			getConnection();
-//			String sql = "insert into chat (nickname, chat, classname, teacher) values(?,?,?,?)";
-//			psmt = conn.prepareStatement(sql);
-//			psmt.setString(1, dto.getNickname());
-//			psmt.setString(2, dto.getChat());
-//			psmt.setString(3, dto.getClassname());
-//			psmt.setString(4, dto.getTeacher());
-//			psmt.executeUpdate();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			close();
-//		}
-//
-//	}
 
 
 }
