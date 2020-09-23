@@ -31,8 +31,8 @@
 </head>
 
 <body id="page-top">
-	<% ChatDTO chatdto =(ChatDTO)session.getAttribute("chatdto"); %>
-	<% CLASS_MEMBER_DTO info =(CLASS_MEMBER_DTO)session.getAttribute("info"); %>
+   <% ChatDTO chatdto =(ChatDTO)session.getAttribute("chatdto"); %>
+   <% CLASS_MEMBER_DTO info =(CLASS_MEMBER_DTO)session.getAttribute("info"); %>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -41,11 +41,11 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Login.jsp">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3"> h5 </div>
+        <img style="width:160px; margin-left: 10px"src="img/logo.png">
+        <div class="sidebar-brand-text mx-3"></div>
       </a>
 
       <!-- Divider -->
@@ -239,12 +239,12 @@
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  	회원정보 수정
+                     회원정보 수정
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="LogoutService.do" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  	로그아웃
+                     로그아웃
                 </a>
               </div>
             </li>
@@ -268,11 +268,11 @@
           <!-- Page Heading -->
           <div class="card mb-4">
           <form class="user" action="classnameService.do" method="post">
-	              <div class="card-header py-3">
-	              <div class="d-sm-flex align-items-center justify-content-between mb-4">
-	            <input name="classname" type="text" class="form-control form-control-user"placeholder="classname">
-	             <input name="teacher" type="text" class="form-control form-control-user"placeholder="teacher">
-	            <input type = "submit" class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" value="채팅방 개설">
+                 <div class="card-header py-3">
+                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
+               <input name="classname" type="text" class="form-control form-control-user"placeholder="classname">
+                <input name="teacher" type="text" class="form-control form-control-user"placeholder="teacher">
+               <input type = "submit" class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" value="채팅방 개설">
             </form>
           </div>
                   <div class="dropdown no-arrow mb-4">
@@ -325,18 +325,22 @@
                 
               </div>
               
+              <% String mg1 = request.getParameter("img"); %>
+         <img style = "width:300px; height:300px;" src = "http://localhost:8083/gitproject/mypage_t.jsp/ <%=mg1 %>.png"><br>
+         
+         
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">공감 수가 많았던 질문 살펴보기</h6>
             </div>
             
+         
             <% 
-            	QuestionDAO dao = new QuestionDAO();
-           		ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
-           		list = dao.viewQ(info.getNickname());
-			%>
-			
+               QuestionDAO dao = new QuestionDAO();
+                 ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+                 list = dao.viewQ(info.getNickname());
+         %>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -345,7 +349,7 @@
                       <th>질문 내용</th> 
                       <th>수업</th>
                       <th>강사</th>
-                      <th>공감 수</th>
+                      <th>공감 수  </th>
                       <th>수업 날짜</th>
                     </tr>
                   </thead>
@@ -365,7 +369,7 @@
                       <th>질문 내용</th> 
                       <th>수업</th>
                       <th>강사</th>
-                      <th>공감 수</th>
+                      <th>공감 수  </th>
                       <th>수업 날짜</th>
                     </tr>
                   </tfoot>

@@ -13,7 +13,7 @@ create sequence chat_num start with 1 increment by 1;
 
 select * from chat;
 
-select * from chat order by chattime desc;
+select * from chat order by chattime;
 
 update chat set likes=1 where chat='test';
 
