@@ -26,6 +26,7 @@ INSERT INTO CLASS_MEMBER (email, nickname, pw, job) VALUES(
    '1111',
    '1');
 
+   
 ///////////////////////////////////////////
 
 --CREATE TABLE question(

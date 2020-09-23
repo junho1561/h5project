@@ -30,4 +30,23 @@ select * from chatinfo;
 drop sequence info_num;
 create sequence info_num start with 1 increment by 1;
 
+////////////////////////////////////////////////////////////
+
+create table state_cnt(
+	nickname varchar2(100) REFERENCES class_member(nickname),
+	pop1 number,
+	pop2 number,
+	pop3 number
+);
+
+insert into state_cnt (nickname, pop1, pop2, pop3) values(
+   's1',
+   1,
+   2,
+   2
+);
+
+select * from state_cnt;
+update state_cnt set pop1 =1, pop2=1, pop3=2 where nickname = 's1';
+
 

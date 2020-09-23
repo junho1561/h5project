@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.controller.AddState;
 import com.controller.JoinService;
 import com.controller.LoginService;
 import com.controller.LogoutService;
@@ -29,7 +30,7 @@ public class FrontController extends HttpServlet {
 		map.put("LoginService.do", new LoginService());
 		map.put("LogoutService.do", new LogoutService());
 		map.put("classnameService.do", new classnameService());
-		map.put("addLikes.do", new addLikes());
+		map.put("AddState.do", new AddState());
 	}
 
 

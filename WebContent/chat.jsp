@@ -130,10 +130,11 @@ button2{
 <title>Insert title here</title>
 </head>
 <body>
+
 	<% request.setCharacterEncoding("UTF-8"); %>
 	<% int num = Integer.parseInt(request.getParameter("cnt")); %>
 	<input type="hidden" id = "chat_num" value = "<%= num %>">
-	
+
 	<div id="chat-container">
 		<br><br><br>
 		<h1>마음껏 질문하세요!</h1>
@@ -209,6 +210,7 @@ button2{
 			}
 		}
 		
+		
 		function select(){
 
 			//스크롤 최하단
@@ -224,7 +226,7 @@ button2{
 						
 						if('${info.nickname}' === result[i].nickname){
 		                     chatData = '<li class="me-corpus"><span>'+result[i].nickname 
-		                     +'</span><br><form action="addLikes.do" method="post"><button type = "submit" class = "button"></form>'+result[i].likes
+		                     +'</span><br><form action="addLikes.do" method="post"><button type = "submit" class = "button" id ="button2"></form>'+result[i].likes
 		                     +'</button><p class="corpus">'
 		                     +result[i].chat+'</p><p class="sysdate">'+result[i].chattime+'</p></li>';
 						}else{
@@ -244,6 +246,17 @@ button2{
 			});
 
 		}
+		
+		
+		
+		/* 좋아요 */
+		  function like_func(){
+		  var frm_read = $('#frm_read');
+		  var boardno = $('#boardno', frm_read).val();
+		  //var mno = $('#mno', frm_read).val();
+		  //console.log("boardno, mno : " + boardno +","+ mno);
+		  
+
 		
 		function play(){
 			//스크롤 최하단
@@ -287,17 +300,34 @@ button2{
 			});
 		}
 		
+		/* var num = 0;
 		// 수업 상태 버튼 1
 		$('#pop1').on('click', function() {
-				var pop1_count = 0;
-	            
-				if (pop1_count < 3) {
-	                alert('수업이 너무 빨라요!');
-	                pop1_count++;
-	            } else {
-	            	alert('상태 버튼 전송은 세 번만 가능합니다.');
-	            }
-		});
+				
+			var pop1_count = 0;
+				
+				if (num < 3) {
+					$.ajax({
+			            url:'AddState.do', //request 보낼 서버의 파일 경로
+			            type:'POST', 
+			            data:{'pop1':pop1_count}, //보낼 데이터
+			            success: function(result) {
+							alert("수업이 너무 빨라요!")			            	
+			            },
+			            error: function() {
+			            	alert("실패")
+			            }
+			        })
+			        pop1_count++;
+				} else {
+						alert("상태 버튼 전송은 세 번만 가능합니다.")
+				}
+				
+		}); */
+		
+		
+		
+		
 		
 		// 수업 상태 버튼 2
 		$('#pop2').on('click', function() {
