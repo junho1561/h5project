@@ -1,3 +1,4 @@
+<%@page import="com.DTO.ChatDTO"%>
 <%@page import="com.DAO.QuestionDAO"%>
 <%@page import="com.DTO.QuestionDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -33,7 +34,7 @@
 </head>
 
 <body id="page-top">
-
+	<% ChatDTO chatdto =(ChatDTO)session.getAttribute("chatdto"); %>
 	<% CLASS_MEMBER_DTO info =(CLASS_MEMBER_DTO)session.getAttribute("info"); %>
 
   <!-- Page Wrapper -->

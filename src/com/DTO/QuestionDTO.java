@@ -11,16 +11,14 @@ public class QuestionDTO {
    
    
 
-   public QuestionDTO(String question, int likes) {
+   public QuestionDTO(String question) {
       this.question = question;
-      this.likes = likes;
    }
 
 
 
    public QuestionDTO(String nickname, String question, String classname, String teacher, String classdate,
          int likes) {
-      super();
       this.nickname = nickname;
       this.question = question;
       this.classname = classname;

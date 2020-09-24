@@ -162,8 +162,8 @@ body{
       
       <% 
                QuestionDAO dao = new QuestionDAO();
-                 ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
-                 list = dao.topQ1();
+               ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+               list = dao.topQ1();
          %>
             
             <div class="card-body">  
@@ -179,8 +179,7 @@ body{
                      <tbody>
                        <tr>
                    <% for (int i = 0; i < list.size(); i++) { %>
-                         <td><%= list.get(i).getQuestion() %></td>
-                         <td><%= list.get(i).getLikes() %></td>
+                         <td><%= list.get(i).getQuestion()%></td>
                        </tr>
                     <% } %>
                   </tbody>                
@@ -216,6 +215,7 @@ body{
       $('#btn').on('click', play);
       $('#content').on('keydown',da);
       setInterval(select,100);
+      setInterval(QSelect,100);
       function da(key){
          if(key.keyCode == 13){
             play();
@@ -237,6 +237,36 @@ body{
          });
       }
 
+      function QSelect(){
+    	  var chat_num = $('#chat_num').val();
+    	  $.ajax({
+    		  url : "SelectQuestion?chat_num=" + chat_num,
+              dataType : "json",
+              success : function(result) {
+                 $('#view1').empty(); 
+                 for (var i = 0; i < result.length; i++) {
+                     var chatData = '';
+                     
+                     if ('${info.nickname}' === result[i].nickname) {
+                    	 chatData = '<li><span>'
+                             +'<p class="corpus">'
+                             + result[i].question
+                             + '</p></span></li>';
+                      } else {
+                         chatData = '<li><span>'
+                               + result[i].question
+                               + '</span><br><input type = "button" class = "button"></li>';
+                      }
+
+                      $('#view1').prepend(chatData);
+
+                      console.log(result[i].question);
+                   }
+                },
+                error : function() {
+                }
+    	  });
+      }
       function select() {
 
          //스크롤 최하단

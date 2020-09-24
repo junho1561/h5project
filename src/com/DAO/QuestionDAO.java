@@ -101,20 +101,16 @@ public class QuestionDAO {
          getConn();
          
          try {
-            String sql = "select * from question order by likes DESC"; 
+            String sql = "SELECT DISTINCT question FROM questions"; 
              pst = conn.prepareStatement(sql);
              
              ResultSet rs = pst.executeQuery();
              
              while (rs.next()) {
-               String nickname = rs.getString(1);
-                String question = rs.getString(2);
-                String classname = rs.getString(3);
-                String teacher = rs.getString(4);
-                String classdate = rs.getString(5);
-                int likes = rs.getInt(6);
+            	 
+                String question = rs.getString(1);
                 
-                QuestionDTO dto = new QuestionDTO(nickname, question, classname, teacher, classdate, likes);
+                QuestionDTO dto = new QuestionDTO(question);
                 list.add(dto);
              }
           

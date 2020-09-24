@@ -28,17 +28,11 @@ INSERT INTO CLASS_MEMBER (email, nickname, pw, job) VALUES(
 
    
 ///////////////////////////////////////////
+SELECT DISTINCT question FROM questions ;
 
---CREATE TABLE question(
---   nickname VARCHAR2(20),
---   question VARCHAR2(3000) not null,
---   classname  VARCHAR2(100) not null,
---   teacher VARCHAR2(100) not null,
---   classdate VARCHAR2(100) not null,
---   likes NUMBER(20) default 0)
 drop table question;
 
-CREATE TABLE question(
+CREATE TABLE questions(
    nickname VARCHAR2(20),
    question VARCHAR2(3000) not null,
    classname VARCHAR2(100) not null,
@@ -48,16 +42,18 @@ CREATE TABLE question(
    CONSTRAINT question_nickname_fk FOREIGN KEY (nickname)
    REFERENCES class_member(nickname));
    
-select * from question;
+select * from questions;
 
-insert into question (nickname, question, classname, teacher) values(
+insert into questions (nickname, question, classname, teacher,classdate, likes) values(
    'd',
-   '최적의 파라미터가 뭘까요?',
+   '최적의 파라미터가 뭘까요?test',
    '머신러닝',
-   '손지영');
+   '손지영',
+   sysdate,
+   1);
 
-insert into question (nickname, question, classname, teacher, classdate, likes) values(
-   '1',
+insert into questions (nickname, question, classname, teacher, classdate, likes) values(
+   'd',
    'test question',
    'test classname',
    'test teacher',
@@ -65,8 +61,8 @@ insert into question (nickname, question, classname, teacher, classdate, likes) 
    0
    );
    
-insert into question (nickname, question, classname, teacher, classdate, likes) values(
-   '스마트',
+insert into questions (nickname, question, classname, teacher, classdate, likes) values(
+   '1',
    '이렇게 저렇게 하면 되나요?',
    '데이터베이스',
    '김동원',
