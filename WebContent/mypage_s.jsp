@@ -155,10 +155,11 @@ H5
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-        <form class="user" action="#" method="post">
-	 	<input type = "submit" class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" value="채팅방 입장">
-	 	</form>
+       <div class="container-fluid">
+        <form name="폼이름">
+        <input type="text" name="input_text" size="50" value="http://localhost:8033/gitproject/chat.jsp?cnt=">
+       <input type = "button" class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" value="채팅방 입장" onClick="location.href=this.form.input_text.value">
+       </form>
           <!-- Page Heading -->
           <!--  <h1 class="h3 mb-2 text-gray-800">마이 페이지 (학생)</h1>
           <p class="mb-4">나의 회원 등급과 질문을 볼 수 있어요.</p>-->
@@ -195,7 +196,6 @@ H5
                       <th>질문 내용</th> 
                       <th>수업</th>
                       <th>강사</th>
-                      <!--<th>공감 수</th>-->
                       <th>수업 날짜</th>
                     </tr>
                   </thead>
@@ -205,7 +205,6 @@ H5
 	                      <td><%= list.get(i).getQuestion() %></td>
 	                      <td><%= list.get(i).getClassname() %></td>
 	                      <td><%= list.get(i).getTeacher() %></td>
-	                      <!--  <td><%= list.get(i).getLikes() %></td>-->
 	                      <td><%= list.get(i).getClassdate() %></td>
 	                    </tr>
                     <% } %>
@@ -215,7 +214,6 @@ H5
                       <th>질문 내용</th> 
                       <th>수업</th>
                       <th>강사</th>
-                      <!--<th>공감 수</th>-->
                       <th>수업 날짜</th>
                     </tr>
                   </tfoot>             

@@ -3,7 +3,7 @@ drop table chatinfo;
 
 create table chat(
 	chat_num number,
-	nickname varchar2(100) REFERENCES class_member(nickname),
+	nickname varchar2(100),
 	chat varchar2(1000),
 	likes number,
 	chattime date default sysdate);

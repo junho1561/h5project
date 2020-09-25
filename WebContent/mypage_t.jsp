@@ -1,3 +1,5 @@
+<%@page import="com.DAO.keywordDAO"%>
+<%@page import="com.DTO.keywordDTO"%>
 <%@page import="com.DTO.ChatDTO"%>
 <%@page import="com.DAO.QuestionDAO"%>
 <%@page import="com.DTO.QuestionDTO"%>
@@ -167,8 +169,8 @@
           <form class="user" action="classnameService.do" method="post">
                  <div class="card-header py-3">
                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
-               <input name="수업 이름" type="text" class="form-control form-control-user"placeholder="수업 이름">
-                <input name="강사 이름" type="text" class="form-control form-control-user"placeholder="강사 이름">
+               <input name="classname" type="text" class="form-control form-control-user"placeholder="수업 이름">
+                <input name="teacher" type="text" class="form-control form-control-user"placeholder="강사 이름">
                <input type = "submit" class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" value="채팅방 개설">
                
                
@@ -209,26 +211,31 @@
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">질문 키워드</h6>
                 </div>
+                 <% 
+                 keywordDAO keyworddao = new keywordDAO();
+                 ArrayList<keywordDTO> keywordlist = new ArrayList<keywordDTO>();
+                 keywordlist = keyworddao.keywordselect();
+        			%>
                 <div class="card-body">
-                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
+                  <h4 class="small font-weight-bold"><%= keywordlist.get(4).getKeyword() %><span class="float-right">90%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
+                  <h4 class="small font-weight-bold"><%= keywordlist.get(1).getKeyword() %><span class="float-right">80%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
+                  <h4 class="small font-weight-bold"><%= keywordlist.get(0).getKeyword() %><span class="float-right">70%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
+                  <h4 class="small font-weight-bold"><%= keywordlist.get(2).getKeyword() %><span class="float-right">60%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
+                  <h4 class="small font-weight-bold"><%= keywordlist.get(3).getKeyword() %><span class="float-right">50%</span></h4>
                   <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
                   </div>
                 </div>
                 
@@ -250,7 +257,7 @@
             <% 
                QuestionDAO dao = new QuestionDAO();
                  ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
-                 list = dao.viewQ(info.getNickname());
+                 list = dao.viewT();
          %>
             <div class="card-body">
               <div class="table-responsive">

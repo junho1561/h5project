@@ -67,7 +67,7 @@ public class QuestionDAO {
 	      getConn();
 	      
 	      try {
-	         String sql = "select * from question where nickname = ?"; 
+	         String sql = "select * from questions where nickname = ?"; 
 	          pst = conn.prepareStatement(sql);
 	          pst.setString(1, nickname);
 	          ResultSet rs = pst.executeQuery();
@@ -97,15 +97,15 @@ public class QuestionDAO {
        getConn();
        
        try {
-          String sql = "select * from question"; 
+          String sql = "select * from questions"; 
            pst = conn.prepareStatement(sql);
            ResultSet rs = pst.executeQuery();
            
            while (rs.next()) {
-              String question = rs.getString(2);
-              String classname = rs.getString(3);
-              String teacher = rs.getString(4);
-              String classdate = rs.getString(5);
+              String question = rs.getString(1);
+              String classname = rs.getString(2);
+              String teacher = rs.getString(3);
+              String classdate = rs.getString(4);
               
               QuestionDTO dto = new QuestionDTO(question, classname, teacher, classdate);
               list.add(dto);

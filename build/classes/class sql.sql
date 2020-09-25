@@ -9,14 +9,14 @@ job number(10) not null,
 studentlevel number(10) default 0,
 CONSTRAINT class_nickname_pk PRIMARY KEY (nickname));
    
-
+delete from CLASS_MEMBER where email='22';
 
 select * from class_member;
 
 
 INSERT INTO CLASS_MEMBER (email, nickname, pw, job) VALUES(
    '22',
-   'd',
+   '2',
    '2222',
    '2');
    
@@ -32,6 +32,8 @@ SELECT DISTINCT question FROM questions ;
 
 drop table question;
 
+delete from questions where nickname='d';
+
 CREATE TABLE questions(
    nickname VARCHAR2(20),
    question VARCHAR2(3000) not null,
@@ -45,7 +47,7 @@ CREATE TABLE questions(
 select * from questions;
 
 insert into questions (nickname, question, classname, teacher,classdate, likes) values(
-   'd',
+   '2',
    '최적의 파라미터가 뭘까요?test',
    '머신러닝',
    '손지영',
@@ -72,19 +74,24 @@ insert into questions (nickname, question, classname, teacher, classdate, likes)
 ////////////////////////////////////////
 drop table keyword;
 
+delete from keyword where classname='test';
+
 CREATE TABLE keyword(
    nickname VARCHAR2(20),
-   title VARCHAR2(100),
-   keyword  VARCHAR2(100),
-   CONSTRAINT keyword_nickname_fk FOREIGN KEY (nickname)
-   REFERENCES class_member(nickname));
+   classname VARCHAR2(100),
+   keyword  VARCHAR2(100));
     
-insert into keyword (nickname, title, keyword) values(
+insert into keyword (nickname, classname, keyword) values(
+   '1',
+   'test',
+   '중요도50');   
+
+insert into keyword (nickname, classname, keyword) values(
    'd',
    'test student',
    'test student');
    
-insert into keyword (nickname, title, keyword) values(
+insert into keyword (nickname, classname, keyword) values(
    '1',
    'test teacher',
    'test teacher');
