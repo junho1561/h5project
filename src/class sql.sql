@@ -1,5 +1,6 @@
 
 drop table class_member;
+DROP TABLE class_member CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE class_member(
 email varchar2(100) unique,
@@ -30,7 +31,7 @@ INSERT INTO CLASS_MEMBER (email, nickname, pw, job) VALUES(
 ///////////////////////////////////////////
 SELECT DISTINCT question FROM questions ;
 
-drop table question;
+drop table questions;
 
 delete from questions where nickname='d';
 

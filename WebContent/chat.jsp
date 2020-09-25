@@ -220,10 +220,24 @@ body{
          if(key.keyCode == 13){
             play();
             treemodel();
+            keyword();
          }
       }
    
- 
+      function keyword() {
+          $.ajax({
+             url : "http://localhost:8000/keyword/textrank",
+             type : "post",
+             success : function(res) {
+                alret("접속성공")
+             },
+             error : function() {
+
+             }
+          });
+       }
+
+      
       function treemodel() {
          $.ajax({
             url : "http://localhost:8000/question/predict",

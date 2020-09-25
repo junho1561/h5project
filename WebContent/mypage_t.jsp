@@ -280,14 +280,14 @@
                        </tr>
                     <% } %>
                   </tbody>
-                  <tfoot>
+                  <!-- <tfoot>
                     <tr>
                       <th>질문 내용</th> 
                       <th>수업</th>
                       <th>강사</th>
                       <th>수업 날짜</th>
                     </tr>
-                  </tfoot>
+                  </tfoot> -->
                   
                 </table>
               </div>
