@@ -122,110 +122,7 @@
               </div>
             </li>
 
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler Â· 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun Â· 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez Â· 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog Â· 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
+            
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -237,7 +134,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="forgot-password.jsp">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                      회원정보 수정
                 </a>
@@ -270,9 +167,21 @@
           <form class="user" action="classnameService.do" method="post">
                  <div class="card-header py-3">
                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
-               <input name="classname" type="text" class="form-control form-control-user"placeholder="classname">
-                <input name="teacher" type="text" class="form-control form-control-user"placeholder="teacher">
+               <input name="수업 이름" type="text" class="form-control form-control-user"placeholder="수업 이름">
+                <input name="강사 이름" type="text" class="form-control form-control-user"placeholder="강사 이름">
                <input type = "submit" class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" value="채팅방 개설">
+               
+               
+               
+               <!-- <?php $chat.jsp = isset($_GET['chat.jsp'])&&$_GET['chat.jsp'] ? sanitize_text_field($_GET['chat.jsp']) : ''; ?>  
+					<form method="get" id="my-search-form" class="my-search-form" action="<?php echo site_url()?>/activity2/?chat.jsp">
+					   <div>
+					      <input type="text" value="1" name="chat.jsp?cnt" id="chat.jsp">
+					      <input type="submit" class="my-search-submit" id="my-search-submit" value="검색">
+					   </div>
+					</form> -->
+					
+               
             </form>
           </div>
                   <div class="dropdown no-arrow mb-4">
@@ -285,7 +194,7 @@
                       <a class="dropdown-item" href="#">머신러닝 3주차</a>
                     </div>
                   </div>
-                     강의를 <code>선택해 주세요</code> 받았던 질문들과<code>키워드를 볼수있습니다</code>
+                    <h10>강의를 선택해 주세요. 받았던 질문과 키워드를 볼 수 있습니다</h10>
                 </div>
             </div>
             <!-- Content Row  <div class="row">-->
@@ -325,14 +234,16 @@
                 
               </div>
               
+              
               <% String mg1 = request.getParameter("img"); %>
-         <img style = "width:300px; height:300px;" src = "http://localhost:8083/gitproject/mypage_t.jsp/ <%=mg1 %>.png"><br>
+        	 <!-- <img style = "width:300px; height:300px;" src = "http://localhost:8083/gitproject/mypage_t.jsp/ <%=mg1 %>.png"><br>
+         
          
          
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">공감 수가 많았던 질문 살펴보기</h6>
+              <h6 class="m-0 font-weight-bold text-primary">수업별 질문 살펴보기</h6>
             </div>
             
          
@@ -349,7 +260,6 @@
                       <th>질문 내용</th> 
                       <th>수업</th>
                       <th>강사</th>
-                      <th>공감 수  </th>
                       <th>수업 날짜</th>
                     </tr>
                   </thead>
@@ -359,7 +269,6 @@
                          <td><%= list.get(i).getQuestion() %></td>
                          <td><%= list.get(i).getClassname() %></td>
                          <td><%= list.get(i).getTeacher() %></td>
-                         <td><%= list.get(i).getLikes() %></td>
                          <td><%= list.get(i).getClassdate() %></td>
                        </tr>
                     <% } %>
@@ -369,7 +278,6 @@
                       <th>질문 내용</th> 
                       <th>수업</th>
                       <th>강사</th>
-                      <th>공감 수  </th>
                       <th>수업 날짜</th>
                     </tr>
                   </tfoot>

@@ -61,38 +61,65 @@ public class QuestionDAO {
    
       
    public ArrayList<QuestionDTO> viewQ(String nickname) {
-      
-      ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
-      
-      getConn();
-      
-      try {
-         String sql = "select * from question where nickname = ?"; 
-          pst = conn.prepareStatement(sql);
-          
-          pst.setString(1, nickname);
-          
-          ResultSet rs = pst.executeQuery();
-          while (rs.next()) {
-             String question = rs.getString(2);
-//             System.out.println("¡Ú" + question);
-             String classname = rs.getString(3);
-             String teacher = rs.getString(4);
-             String classdate = rs.getString(5);
-             int likes = rs.getInt(6);
-             
-             QuestionDTO dto = new QuestionDTO(question, classname, teacher, classdate, likes);
-             list.add(dto);
-          }
+	      
+	      ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+	      
+	      getConn();
+	      
+	      try {
+	         String sql = "select * from question where nickname = ?"; 
+	          pst = conn.prepareStatement(sql);
+	          pst.setString(1, nickname);
+	          ResultSet rs = pst.executeQuery();
+	          while (rs.next()) {
+	             String question = rs.getString(2);
+	             String classname = rs.getString(3);
+	             String teacher = rs.getString(4);
+	             String classdate = rs.getString(5);
+	             
+	             QuestionDTO dto = new QuestionDTO(question, classname, teacher, classdate);
+	             list.add(dto);
+	          }
+	       
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      return list;
+	      
+	   }
+   
+   public ArrayList<QuestionDTO> viewT() {
        
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally {
-         close();
-      }
-      return list;
-      
-   }
+       ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+       
+       getConn();
+       
+       try {
+          String sql = "select * from question"; 
+           pst = conn.prepareStatement(sql);
+           ResultSet rs = pst.executeQuery();
+           
+           while (rs.next()) {
+              String question = rs.getString(2);
+              String classname = rs.getString(3);
+              String teacher = rs.getString(4);
+              String classdate = rs.getString(5);
+              
+              QuestionDTO dto = new QuestionDTO(question, classname, teacher, classdate);
+              list.add(dto);
+           }
+        
+       } catch (Exception e) {
+          e.printStackTrace();
+       } finally {
+          close();
+       }
+       return list;
+       
+    }
+   
    
    public ArrayList<QuestionDTO> topQ1() {
          

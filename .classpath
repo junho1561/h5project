@@ -10,9 +10,9 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/SMT051/Desktop/lib2/cos.jar"/>
-	<classpathentry kind="lib" path="C:/Users/SMT051/Desktop/lib2/gson-2.8.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/SMT051/Desktop/lib2/jstl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/SMT051/Desktop/lib2/standard.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SMT039/Desktop/eclipse_library(200924)/cos.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SMT039/Desktop/eclipse_library(200924)/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SMT039/Desktop/eclipse_library(200924)/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SMT039/Desktop/eclipse_library(200924)/standard.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

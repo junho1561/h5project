@@ -11,8 +11,9 @@ public class QuestionDTO {
    
    
 
-   public QuestionDTO(String question) {
+   public QuestionDTO(String question, int likes) {
       this.question = question;
+      this.likes = likes;
    }
 
 
@@ -29,18 +30,22 @@ public class QuestionDTO {
 
 
 
-   public QuestionDTO(String question, String classname, String teacher, String classdate, int likes) {
-      super();
+   public QuestionDTO(String question, String classname, String teacher, String classdate) {
       this.question = question;
       this.classname = classname;
       this.teacher = teacher;
       this.classdate = classdate;
-      this.likes = likes;
    }
 
 
 
-   public String getNickname() {
+   public QuestionDTO(String question) {
+	   this.question = question;
+}
+
+
+
+public String getNickname() {
       return nickname;
    }
 
@@ -109,10 +114,5 @@ public class QuestionDTO {
    public void setLikes(int likes) {
       this.likes = likes;
    }
-   
-   
-   
-   
-   
 
 }

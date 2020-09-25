@@ -10803,13 +10803,13 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/mMKkLhEdZUE/600x800");
+  background: url(https://source.unsplash.com/Rec1f6XewdY/600x800);
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
-  background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+ background: url(https://source.unsplash.com/7esRPTt38nI/600x800);
   background-position: center;
   background-size: cover;
 }
