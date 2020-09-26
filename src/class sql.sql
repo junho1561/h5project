@@ -41,28 +41,25 @@ CREATE TABLE questions(
    classname VARCHAR2(100) not null,
    teacher VARCHAR2(100) not null,
    classdate VARCHAR2(100) not null,
-   likes NUMBER(20),
    CONSTRAINT question_nickname_fk FOREIGN KEY (nickname)
-   REFERENCES class_member(nickname));
+   REFERENCES class_member(nickname),
+   CONSTRAINT question_pk PRIMARY KEY (question));
    
-select * from questions;
+select question, classname, teacher, classdate from questions;
 
-insert into questions (nickname, question, classname, teacher,classdate, likes) values(
+insert into questions (nickname, question, classname, teacher,classdate) values(
    '2',
    '최적의 파라미터가 뭘까요?test',
    '머신러닝',
    '손지영',
-   sysdate,
-   1);
+   sysdate);
 
-insert into questions (nickname, question, classname, teacher, classdate, likes) values(
+insert into questions (nickname, question, classname, teacher, classdate) values(
    'd',
    'test question',
    'test classname',
    'test teacher',
-   sysdate,
-   0
-   );
+   sysdate);
    
 insert into questions (nickname, question, classname, teacher, classdate, likes) values(
    '1',

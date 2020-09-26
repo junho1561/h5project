@@ -125,26 +125,26 @@ button2{
     transform: translate(-50%, 0)
 }
 
-.button{
-    background-image: url(https://kids.nationalgeographic.com/content/dam/kids/photos/articles/Science/H-P/heart.ngsversion.1396531395268.adapt.1900.1.jpg); 
-    background-repeat: no-repeat;  
-    background-color: transparent;
-    background-size: 20px 20px;  
-    border: none;          
-    cursor: pointer;       
-   width: 20px;
-   height: 20px;
-}
+
 
 .con_btn {
    margin: 0px auto;
    text-align: center;
 }
 body{
-   background-image: url('img/test1.png');
+   background-image: url('img/test.png');
    background-size: 100%;
 }
-
+#exit{
+    width: 300px;
+   height: 30px;
+   border-radius: 10px;
+   border: 2px solid #4e73df;
+   background-color: white;
+   position: relative;
+   left: 1650px;
+   top: 1px;
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -169,11 +169,11 @@ body{
             <div class="card-body">  
               <div class="table-responsive">
             <tbody>
-            <table class="table table-bordered" id="view1" width="100%" cellspacing="0">
+            <div id="view1">
+            <table class="table table-bordered" width="100%" cellspacing="0">
              <thead>
                     <tr>
                       <th>질문 내용</th> 
-                      <th>공감 수  </th>
                     </tr>
                   </thead>
                      <tbody>
@@ -205,10 +205,12 @@ body{
          <button id="pop3" onclick="pop3()"> 이해가 잘 돼요! </button>
       </div>
       
+       <a href="mypage_t.jsp" id = "exit">강의종료</a>
          
 
    
    <!-- javascript -->
+   
    <script src="js/jquery-3.4.1.min.js"></script>
    <script type="text/javascript">
       console.log('아이디>>','${info.nickname}');
@@ -298,18 +300,14 @@ body{
                         if ('${info.nickname}' === result[i].nickname) {
                            chatData = '<li class="me-corpus"><span>'
                                  + result[i].nickname
-                                 + '</span><br><form action="addLikes.do" method="post"><button type = "submit" class = "button" id ="button2"></form>'
-                                 + result[i].likes
-                                 + '</button><p class="corpus">'
+                                 + '</span><br><p class="corpus">'
                                  + result[i].chat
                                  + '</p><p class="sysdate">'
                                  + result[i].chattime + '</p></li>';
                         } else {
                            chatData = '<li><span>'
                                  + result[i].nickname
-                                 + '</span><br><input type = "button" class = "button">'
-                                 + result[i].likes
-                                 + '</button><p class="corpus">'
+                                 + '</span><br><p class="corpus">'
                                  + result[i].chat + '</p></li>';
                         }
 
@@ -435,6 +433,7 @@ body{
             alert('상태 버튼 전송은 세 번만 가능합니다.');
          }
       });
+      
    </script>
 </body>
 </html>

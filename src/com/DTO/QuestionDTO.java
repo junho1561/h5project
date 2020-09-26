@@ -18,14 +18,12 @@ public class QuestionDTO {
 
 
 
-   public QuestionDTO(String nickname, String question, String classname, String teacher, String classdate,
-         int likes) {
+   public QuestionDTO(String nickname, String question, String classname, String teacher, String classdate) {
       this.nickname = nickname;
       this.question = question;
       this.classname = classname;
       this.teacher = teacher;
       this.classdate = classdate;
-      this.likes = likes;
    }
 
 

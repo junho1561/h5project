@@ -61,34 +61,34 @@ public class QuestionDAO {
    
       
    public ArrayList<QuestionDTO> viewQ(String nickname) {
-	      
-	      ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
-	      
-	      getConn();
-	      
-	      try {
-	         String sql = "select * from questions where nickname = ?"; 
-	          pst = conn.prepareStatement(sql);
-	          pst.setString(1, nickname);
-	          ResultSet rs = pst.executeQuery();
-	          while (rs.next()) {
-	             String question = rs.getString(2);
-	             String classname = rs.getString(3);
-	             String teacher = rs.getString(4);
-	             String classdate = rs.getString(5);
-	             
-	             QuestionDTO dto = new QuestionDTO(question, classname, teacher, classdate);
-	             list.add(dto);
-	          }
-	       
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	      } finally {
-	         close();
-	      }
-	      return list;
-	      
-	   }
+         
+         ArrayList<QuestionDTO> studentlist = new ArrayList<QuestionDTO>();
+         
+         getConn();
+         
+         try {
+            String sql = "select question, classname, teacher, classdate questions where nickname = ?"; 
+             pst = conn.prepareStatement(sql);
+             pst.setString(1, nickname);
+             ResultSet rs = pst.executeQuery();
+             while (rs.next()) {
+                String question = rs.getString(2);
+                String classname = rs.getString(3);
+                String teacher = rs.getString(4);
+                String classdate = rs.getString(5);
+                
+                QuestionDTO dto = new QuestionDTO(question, classname, teacher, classdate);
+                studentlist.add(dto);
+             }
+          
+         } catch (Exception e) {
+            e.printStackTrace();
+         } finally {
+            close();
+         }
+         return studentlist;
+         
+      }
    
    public ArrayList<QuestionDTO> viewT() {
        
@@ -97,7 +97,7 @@ public class QuestionDAO {
        getConn();
        
        try {
-          String sql = "select * from questions"; 
+          String sql = "select question, classname, teacher, classdate from questions"; 
            pst = conn.prepareStatement(sql);
            ResultSet rs = pst.executeQuery();
            
@@ -134,7 +134,7 @@ public class QuestionDAO {
              ResultSet rs = pst.executeQuery();
              
              while (rs.next()) {
-            	 
+                
                 String question = rs.getString(1);
                 
                 QuestionDTO dto = new QuestionDTO(question);

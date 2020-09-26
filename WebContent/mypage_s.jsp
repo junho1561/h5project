@@ -182,13 +182,14 @@ H5
               <h6 class="m-0 font-weight-bold text-primary">나의 질문 보기</h6>
             </div>
             
-            <% 
-            	QuestionDAO dao = new QuestionDAO();
-           		ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
-           		list = dao.viewQ(info.getNickname());
-			%>
+              <% 
+               QuestionDAO dao = new QuestionDAO();
+                 ArrayList<QuestionDTO> studentlist = new ArrayList<QuestionDTO>();
+                 studentlist = dao.viewQ(info.getNickname());
+         %>
+
 			          
-            <div class="card-body">  
+             <div class="card-body">  
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -199,24 +200,17 @@ H5
                       <th>수업 날짜</th>
                     </tr>
                   </thead>
-				 <tbody>
-                  <% for (int i = 1; i < list.size(); i++) { %>
-	                    <tr>
-	                      <td><%= list.get(i).getQuestion() %></td>
-	                      <td><%= list.get(i).getClassname() %></td>
-	                      <td><%= list.get(i).getTeacher() %></td>
-	                      <td><%= list.get(i).getClassdate() %></td>
-	                    </tr>
+             <tbody>
+                  <% for (int i = 1; i < studentlist.size(); i++) { %>
+                       <tr>
+                         <td><%= studentlist.get(i).getQuestion() %></td>
+                         <td><%= studentlist.get(i).getClassname() %></td>
+                         <td><%= studentlist.get(i).getTeacher() %></td>
+                         <td><%= studentlist.get(i).getClassdate() %></td>
+                       </tr>
                     <% } %>
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>질문 내용</th> 
-                      <th>수업</th>
-                      <th>강사</th>
-                      <th>수업 날짜</th>
-                    </tr>
-                  </tfoot>             
+
                 </table>
               </div>
             </div>
